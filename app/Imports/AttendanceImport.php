@@ -22,6 +22,15 @@ class AttendanceImport implements ToModel, WithStartRow, WithCalculatedFormulas
     */
     public function model(array $row)
     {
+
+        $exists = Attendance::where('name', $row[1])
+            ->where('date', $row[3])
+            ->exists();
+
+        if ($exists) {
+            return null;
+        }
+
         return new Attendance([
             'name' => $row['1'],
             'address' => $row['2'],

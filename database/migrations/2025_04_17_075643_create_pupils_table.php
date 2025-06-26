@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('gender');
             $table->text('email_address')->nullable();
             $table->text('address');
-            $table->text('student_form_10')->nullable();
+            // $table->text('student_form_10')->nullable();
             $table->smallInteger('grade_level');
             $table->text('section');
             $table->smallInteger('status')->default(1);

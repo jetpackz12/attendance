@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Attendance</title>
+    <title>Trinidad 1 Central Elementary School</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
@@ -21,7 +21,7 @@
 <body class="hold-transition login-page" style="background-color: #0ac4b5">
     <div class="login-box bg-white">
         <div class="login-logo">
-            <a class="text-black font-extrabold" href="{{ route('login') }}"><b>ATTENDANCE</b></a>
+            <a class="text-black font-extrabold" href="{{ route('login') }}"><b>Trinidad 1 Central Elementary School</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card">

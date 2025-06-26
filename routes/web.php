@@ -46,6 +46,7 @@ Route::middleware(['AuthenticatedUser'])->prefix('pupil_management')->group(func
     Route::get('/edit', [PupilController::class, 'edit'])->name('pupil_management_edit');
     Route::post('/update', [PupilController::class, 'update'])->name('pupil_management_update');
     Route::post('/destroy', [PupilController::class, 'destroy'])->name('pupil_management_destroy');
+    Route::get('/print/{id}', [PupilController::class, 'print'])->name('pupil_print');
 });
 
 Route::middleware(['AuthenticatedUser'])->get('/reports', [ReportController::class, 'index'])->name('reports');
