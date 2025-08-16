@@ -141,11 +141,7 @@
                     </div>
                     <div class="col-md-4">
                         <label class="form-label">Name of Adviser/Teacher:</label>
-                        <select class="form-control" id="v_SF10_teacher" name="SF10_teacher" value="{{ $pupil->teacher_id }}" disabled>
-                            @foreach ($teachers as $teacher)
-                                <option value="{{ $teacher->id }}">{{ $teacher->first_name }} {{ $teacher->middle_name }} {{ $teacher->last_name }}</option>
-                            @endforeach
-                        </select>
+                        <input type="text" class="form-control" id="v_SF10_teacher" name="SF10_teacher"  value="{{ $pupil->teacher_id }}" readonly>
                     </div>
                 </div>
                 <hr class="border border-dark">

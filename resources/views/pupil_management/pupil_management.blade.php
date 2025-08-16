@@ -21,6 +21,9 @@
                             <div class="card-header">
                                 <h3 class="card-title">LIST OF PUPIL(S)</h3>
                                 <div class="float-right">
+                                    <button class="btn btn-success download_student_form_10"
+                                        data-path="{{ asset('student_form_10/Student_custom_form10.xlsx') }}"><i
+                                            class="fas fa-file-download"></i> Download Student Form 10 </button>
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#modal-add"><i
                                             class="fas fa-plus-circle"></i> Add
                                         Pupil</button>
@@ -232,7 +235,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="border border-dark p-2">
+                        {{-- <div class="border border-dark p-2">
                             <h1 class="display-6 text-center">SF10-ES</h1>
                             <hr>
                             <div class="row mt-1">
@@ -436,7 +439,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -463,6 +466,7 @@
                 <form class="formPost" action="" method="POST">
                     @csrf
                     <div class="modal-body">
+                        <input class="form-control e_id" type="text" name="id" hidden readonly>
                         <div class="row">
                             <div class="col-6">
                                 <div class="d-flex justify-content-center align-items-center">
@@ -550,56 +554,61 @@
                                 </div>
                             </div> --}}
                         </div>
-                        
+
                         <div class="border border-dark p-2">
                             <h1 class="display-6 text-center">SF10-ES</h1>
                             <hr>
                             <div class="row mt-1">
                                 <div class="col-md-6">
                                     <label class="form-label">School:</label>
-                                    <input type="text" class="form-control" id="v_SF10_school" name="SF10_school" readonly>
+                                    <input type="text" class="form-control" id="v_SF10_school" name="SF10_school"
+                                        readonly>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">School ID:</label>
-                                    <input type="text" class="form-control" id="v_SF10_school_id" name="SF10_school_id" readonly>
+                                    <input type="text" class="form-control" id="v_SF10_school_id"
+                                        name="SF10_school_id" readonly>
                                 </div>
                             </div>
 
                             <div class="row mt-1">
                                 <div class="col-md-3">
                                     <label class="form-label">District:</label>
-                                    <input type="text" class="form-control" id="v_SF10_district" name="SF10_district" readonly>
+                                    <input type="text" class="form-control" id="v_SF10_district"
+                                        name="SF10_district" readonly>
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Division:</label>
-                                    <input type="text" class="form-control" id="v_SF10_division" name="SF10_division" readonly>
+                                    <input type="text" class="form-control" id="v_SF10_division"
+                                        name="SF10_division" readonly>
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Region:</label>
-                                    <input type="text" class="form-control" id="v_SF10_region" name="SF10_region" readonly>
+                                    <input type="text" class="form-control" id="v_SF10_region" name="SF10_region"
+                                        readonly>
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">School Year:</label>
-                                    <input type="text" class="form-control" id="v_SF10_school_year" name="SF10_school_year" readonly>
+                                    <input type="text" class="form-control" id="v_SF10_school_year"
+                                        name="SF10_school_year" readonly>
                                 </div>
                             </div>
 
                             <div class="row mt-1">
                                 <div class="col-md-4">
                                     <label class="form-label">Classified as Grade:</label>
-                                    <input type="text" class="form-control" id="v_SF10_grade" name="SF10_grade" readonly>
+                                    <input type="text" class="form-control" id="v_SF10_grade" name="SF10_grade"
+                                        readonly>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Section:</label>
-                                    <input type="text" class="form-control" id="v_SF10_section" name="SF10_section" readonly>
+                                    <input type="text" class="form-control" id="v_SF10_section"
+                                        name="SF10_section" readonly>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Name of Adviser/Teacher:</label>
-                                    <select class="form-control" id="v_SF10_teacher" name="SF10_teacher" disabled>
-                                        @foreach ($teachers as $teacher)
-                                            <option value="{{ $teacher->id }}">{{ $teacher->first_name }} {{ $teacher->middle_name }} {{ $teacher->last_name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" id="v_SF10_teacher"
+                                        name="SF10_teacher" readonly>
                                 </div>
                             </div>
                             <hr class="border border-dark">
@@ -623,66 +632,110 @@
                                     <!-- Hardcoded version for each subject -->
                                     <tr>
                                         <td><strong>Mother Tongue</strong></td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_mother_tongue" name="SF10_1_mother_tongue"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_mother_tongue" name="SF10_2_mother_tongue"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_mother_tongue" name="SF10_3_mother_tongue"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_mother_tongue" name="SF10_4_mother_tongue"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_mother_tongue" name="SF10_final_mother_tongue"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_mother_tongue" name="SF10_remarks_mother_tongue"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_mother_tongue"
+                                                name="SF10_1_mother_tongue" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_mother_tongue"
+                                                name="SF10_2_mother_tongue" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_mother_tongue"
+                                                name="SF10_3_mother_tongue" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_mother_tongue"
+                                                name="SF10_4_mother_tongue" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_final_mother_tongue"
+                                                name="SF10_final_mother_tongue" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_remarks_mother_tongue"
+                                                name="SF10_remarks_mother_tongue" readonly></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Filipino</strong></td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_filipino" name="SF10_1_filipino"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_filipino" name="SF10_2_filipino"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_filipino" name="SF10_3_filipino"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_filipino" name="SF10_4_filipino"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_filipino" name="SF10_final_filipino"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_filipino" name="SF10_remarks_filipino"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_filipino"
+                                                name="SF10_1_filipino" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_filipino"
+                                                name="SF10_2_filipino" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_filipino"
+                                                name="SF10_3_filipino" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_filipino"
+                                                name="SF10_4_filipino" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_final_filipino"
+                                                name="SF10_final_filipino" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_remarks_filipino"
+                                                name="SF10_remarks_filipino" readonly></td>
                                     </tr>
                                     <tr>
                                         <td><strong>English</strong></td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_english" name="SF10_1_english"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_english" name="SF10_2_english"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_english" name="SF10_3_english"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_english" name="SF10_4_english"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_english" name="SF10_final_english"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_english" name="SF10_remarks_english"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_english"
+                                                name="SF10_1_english" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_english"
+                                                name="SF10_2_english" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_english"
+                                                name="SF10_3_english" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_english"
+                                                name="SF10_4_english" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_final_english"
+                                                name="SF10_final_english" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_remarks_english"
+                                                name="SF10_remarks_english" readonly></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Mathematics</strong></td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_mathematics" name="SF10_1_mathematics"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_mathematics" name="SF10_2_mathematics"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_mathematics" name="SF10_3_mathematics"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_mathematics" name="SF10_4_mathematics"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_mathematics" name="SF10_final_mathematics"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_mathematics" name="SF10_remarks_mathematics"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_mathematics"
+                                                name="SF10_1_mathematics" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_mathematics"
+                                                name="SF10_2_mathematics" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_mathematics"
+                                                name="SF10_3_mathematics" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_mathematics"
+                                                name="SF10_4_mathematics" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_final_mathematics"
+                                                name="SF10_final_mathematics" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_remarks_mathematics"
+                                                name="SF10_remarks_mathematics" readonly></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Science</strong></td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_science" name="SF10_1_science"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_science" name="SF10_2_science"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_science" name="SF10_3_science"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_science" name="SF10_4_science"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_science" name="SF10_final_science"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_science" name="SF10_remarks_science"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_science"
+                                                name="SF10_1_science" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_science"
+                                                name="SF10_2_science" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_science"
+                                                name="SF10_3_science" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_science"
+                                                name="SF10_4_science" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_final_science"
+                                                name="SF10_final_science" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_remarks_science"
+                                                name="SF10_remarks_science" readonly></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Araling Panlipunan</strong></td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_araling_panlipunan" name="SF10_1_araling_panlipunan"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_araling_panlipunan" name="SF10_2_araling_panlipunan"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_araling_panlipunan" name="SF10_3_araling_panlipunan"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_araling_panlipunan" name="SF10_4_araling_panlipunan"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_araling_panlipunan" name="SF10_final_araling_panlipunan"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_araling_panlipunan" name="SF10_remarks_araling_panlipunan"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_araling_panlipunan"
+                                                name="SF10_1_araling_panlipunan" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_araling_panlipunan"
+                                                name="SF10_2_araling_panlipunan" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_araling_panlipunan"
+                                                name="SF10_3_araling_panlipunan" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_araling_panlipunan"
+                                                name="SF10_4_araling_panlipunan" readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_final_araling_panlipunan"
+                                                name="SF10_final_araling_panlipunan" readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_remarks_araling_panlipunan"
+                                                name="SF10_remarks_araling_panlipunan" readonly></td>
                                     </tr>
                                     <tr>
                                         <td><strong>EPP / TLE</strong></td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_epp_tle" name="SF10_1_epp_tle"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_epp_tle" name="SF10_2_epp_tle"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_epp_tle" name="SF10_3_epp_tle"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_epp_tle" name="SF10_4_epp_tle"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_epp_tle" name="SF10_final_epp_tle"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_epp_tle" name="SF10_remarks_epp_tle"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_epp_tle"
+                                                name="SF10_1_epp_tle" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_epp_tle"
+                                                name="SF10_2_epp_tle" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_epp_tle"
+                                                name="SF10_3_epp_tle" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_epp_tle"
+                                                name="SF10_4_epp_tle" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_final_epp_tle"
+                                                name="SF10_final_epp_tle" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_remarks_epp_tle"
+                                                name="SF10_remarks_epp_tle" readonly></td>
                                     </tr>
                                     <tr>
                                         <td><strong>MAPEH</strong></td>
@@ -690,39 +743,65 @@
                                     </tr>
                                     <tr>
                                         <td>Music</td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_music" name="SF10_1_music"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_music" name="SF10_2_music"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_music" name="SF10_3_music"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_music" name="SF10_4_music"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_music" name="SF10_final_music"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_music" name="SF10_remarks_music"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_music"
+                                                name="SF10_1_music" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_music"
+                                                name="SF10_2_music" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_music"
+                                                name="SF10_3_music" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_music"
+                                                name="SF10_4_music" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_final_music"
+                                                name="SF10_final_music" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_remarks_music"
+                                                name="SF10_remarks_music" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Arts</td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_arts" name="SF10_1_arts"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_arts" name="SF10_2_arts"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_arts" name="SF10_3_arts"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_arts" name="SF10_4_arts"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_arts" name="SF10_final_arts"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_arts" name="SF10_remarks_arts"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_arts"
+                                                name="SF10_1_arts" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_arts"
+                                                name="SF10_2_arts" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_arts"
+                                                name="SF10_3_arts" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_arts"
+                                                name="SF10_4_arts" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_final_arts"
+                                                name="SF10_final_arts" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_remarks_arts"
+                                                name="SF10_remarks_arts" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Physical Education</td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_physical_education" name="SF10_1_physical_education"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_physical_education" name="SF10_2_physical_education"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_physical_education" name="SF10_3_physical_education"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_physical_education" name="SF10_4_physical_education"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_physical_education" name="SF10_final_physical_education"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_physical_education" name="SF10_remarks_physical_education"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_physical_education"
+                                                name="SF10_1_physical_education" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_physical_education"
+                                                name="SF10_2_physical_education" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_physical_education"
+                                                name="SF10_3_physical_education" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_physical_education"
+                                                name="SF10_4_physical_education" readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_final_physical_education"
+                                                name="SF10_final_physical_education" readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_remarks_physical_education"
+                                                name="SF10_remarks_physical_education" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Health</td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_health" name="SF10_1_health"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_health" name="SF10_2_health"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_health" name="SF10_3_health"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_health" name="SF10_4_health"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_health" name="SF10_final_health"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_health" name="SF10_remarks_health"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_health"
+                                                name="SF10_1_health" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_health"
+                                                name="SF10_2_health" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_health"
+                                                name="SF10_3_health" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_health"
+                                                name="SF10_4_health" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_final_health"
+                                                name="SF10_final_health" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_remarks_health"
+                                                name="SF10_remarks_health" readonly></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Eduk. sa Pagpapakatao</strong></td>
@@ -730,27 +809,49 @@
                                     </tr>
                                     <tr>
                                         <td>*Arabic Language</td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_arabic_language" name="SF10_1_arabic_language"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_arabic_language" name="SF10_2_arabic_language"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_arabic_language" name="SF10_3_arabic_language"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_arabic_language" name="SF10_4_arabic_language"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_arabic_language" name="SF10_final_arabic_language"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_arabic_language" name="SF10_remarks_arabic_language"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_1_arabic_language"
+                                                name="SF10_1_arabic_language" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_2_arabic_language"
+                                                name="SF10_2_arabic_language" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_3_arabic_language"
+                                                name="SF10_3_arabic_language" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_4_arabic_language"
+                                                name="SF10_4_arabic_language" readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_final_arabic_language"
+                                                name="SF10_final_arabic_language" readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_remarks_arabic_language"
+                                                name="SF10_remarks_arabic_language" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>*Islamic Values Education</td>
-                                        <td><input class="form-control text-center" id="v_SF10_1_islamic_values_education" name="SF10_1_islamic_values_education"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_2_islamic_values_education" name="SF10_2_islamic_values_education"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_3_islamic_values_education" name="SF10_3_islamic_values_education"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_4_islamic_values_education" name="SF10_4_islamic_values_education"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_islamic_values_education" name="SF10_final_islamic_values_education"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_islamic_values_education" name="SF10_remarks_islamic_values_education"  readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_1_islamic_values_education"
+                                                name="SF10_1_islamic_values_education" readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_2_islamic_values_education"
+                                                name="SF10_2_islamic_values_education" readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_3_islamic_values_education"
+                                                name="SF10_3_islamic_values_education" readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_4_islamic_values_education"
+                                                name="SF10_4_islamic_values_education" readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_final_islamic_values_education"
+                                                name="SF10_final_islamic_values_education" readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_remarks_islamic_values_education"
+                                                name="SF10_remarks_islamic_values_education" readonly></td>
                                     </tr>
                                     <tr>
                                         <td><strong>General Average</strong></td>
                                         <td colspan="4"></td>
-                                        <td><input class="form-control text-center" id="v_SF10_final_general_average" name="SF10_final_general_average"  readonly></td>
-                                        <td><input class="form-control text-center" id="v_SF10_remarks_general_average" name="SF10_remarks_general_average"  readonly></td>
+                                        <td><input class="form-control text-center" id="v_SF10_final_general_average"
+                                                name="SF10_final_general_average" readonly></td>
+                                        <td><input class="form-control text-center"
+                                                id="v_SF10_remarks_general_average"
+                                                name="SF10_remarks_general_average" readonly></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -758,7 +859,8 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <a href="#" rel="noopener" data-id="" target="_blank" class="btn btn-primary"  id="pupil_print"><i class="fas fa-print"></i> Print</a>
+                        <a href="#" rel="noopener" data-id="" target="_blank" class="btn btn-primary"
+                            id="pupil_print"><i class="fas fa-print"></i> Print</a>
                     </div>
                 </form>
             </div>
@@ -889,55 +991,76 @@
                             </div>
                         </div>
                         <div class="row mt-1">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Student Form 10: </label>
+                                    <div class="input-group mt-1">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="e_student_form"
+                                                name="student_form">
+                                            <label class="custom-file-label" for="student_form">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="border border-dark p-2">
+
+                        {{-- <div class="border border-dark p-2">
                             <h1 class="display-6 text-center">SF10-ES</h1>
                             <hr>
                             <div class="row mt-1">
                                 <div class="col-md-6">
                                     <label class="form-label">School:</label>
-                                    <input type="text" class="form-control" id="e_SF10_school" name="SF10_school">
+                                    <input type="text" class="form-control" id="e_SF10_school"
+                                        name="SF10_school">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">School ID:</label>
-                                    <input type="text" class="form-control" id="e_SF10_school_id" name="SF10_school_id">
+                                    <input type="text" class="form-control" id="e_SF10_school_id"
+                                        name="SF10_school_id">
                                 </div>
                             </div>
 
                             <div class="row mt-1">
                                 <div class="col-md-3">
                                     <label class="form-label">District:</label>
-                                    <input type="text" class="form-control" id="e_SF10_district" name="SF10_district">
+                                    <input type="text" class="form-control" id="e_SF10_district"
+                                        name="SF10_district">
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Division:</label>
-                                    <input type="text" class="form-control" id="e_SF10_division" name="SF10_division">
+                                    <input type="text" class="form-control" id="e_SF10_division"
+                                        name="SF10_division">
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Region:</label>
-                                    <input type="text" class="form-control" id="e_SF10_region" name="SF10_region">
+                                    <input type="text" class="form-control" id="e_SF10_region"
+                                        name="SF10_region">
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">School Year:</label>
-                                    <input type="text" class="form-control" id="e_SF10_school_year" name="SF10_school_year">
+                                    <input type="text" class="form-control" id="e_SF10_school_year"
+                                        name="SF10_school_year">
                                 </div>
                             </div>
 
                             <div class="row mt-1">
                                 <div class="col-md-4">
                                     <label class="form-label">Classified as Grade:</label>
-                                    <input type="text" class="form-control" id="e_SF10_grade" name="SF10_grade" readonly>
+                                    <input type="text" class="form-control" id="e_SF10_grade" name="SF10_grade"
+                                        readonly>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Section:</label>
-                                    <input type="text" class="form-control" id="e_SF10_section" name="SF10_section" readonly>
+                                    <input type="text" class="form-control" id="e_SF10_section"
+                                        name="SF10_section" readonly>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Name of Adviser/Teacher:</label>
                                     <select class="form-control" id="e_SF10_teacher" name="SF10_teacher">
                                         @foreach ($teachers as $teacher)
-                                            <option value="{{ $teacher->id }}">{{ $teacher->first_name }} {{ $teacher->middle_name }} {{ $teacher->last_name }}</option>
+                                            <option value="{{ $teacher->id }}">{{ $teacher->first_name }}
+                                                {{ $teacher->middle_name }} {{ $teacher->last_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -963,66 +1086,110 @@
                                     <!-- Hardcoded version for each subject -->
                                     <tr>
                                         <td><strong>Mother Tongue</strong></td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_mother_tongue" name="SF10_1_mother_tongue" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_mother_tongue" name="SF10_2_mother_tongue" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_mother_tongue" name="SF10_3_mother_tongue" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_mother_tongue" name="SF10_4_mother_tongue" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_mother_tongue" name="SF10_final_mother_tongue" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_mother_tongue" name="SF10_remarks_mother_tongue" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_mother_tongue"
+                                                name="SF10_1_mother_tongue"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_mother_tongue"
+                                                name="SF10_2_mother_tongue"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_mother_tongue"
+                                                name="SF10_3_mother_tongue"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_mother_tongue"
+                                                name="SF10_4_mother_tongue"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_final_mother_tongue"
+                                                name="SF10_final_mother_tongue"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_remarks_mother_tongue"
+                                                name="SF10_remarks_mother_tongue"></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Filipino</strong></td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_filipino" name="SF10_1_filipino" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_filipino" name="SF10_2_filipino" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_filipino" name="SF10_3_filipino" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_filipino" name="SF10_4_filipino" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_filipino" name="SF10_final_filipino" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_filipino" name="SF10_remarks_filipino" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_filipino"
+                                                name="SF10_1_filipino"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_filipino"
+                                                name="SF10_2_filipino"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_filipino"
+                                                name="SF10_3_filipino"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_filipino"
+                                                name="SF10_4_filipino"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_final_filipino"
+                                                name="SF10_final_filipino"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_remarks_filipino"
+                                                name="SF10_remarks_filipino"></td>
                                     </tr>
                                     <tr>
                                         <td><strong>English</strong></td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_english" name="SF10_1_english" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_english" name="SF10_2_english" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_english" name="SF10_3_english" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_english" name="SF10_4_english" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_english" name="SF10_final_english" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_english" name="SF10_remarks_english" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_english"
+                                                name="SF10_1_english"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_english"
+                                                name="SF10_2_english"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_english"
+                                                name="SF10_3_english"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_english"
+                                                name="SF10_4_english"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_final_english"
+                                                name="SF10_final_english"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_remarks_english"
+                                                name="SF10_remarks_english"></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Mathematics</strong></td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_mathematics" name="SF10_1_mathematics" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_mathematics" name="SF10_2_mathematics" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_mathematics" name="SF10_3_mathematics" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_mathematics" name="SF10_4_mathematics" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_mathematics" name="SF10_final_mathematics" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_mathematics" name="SF10_remarks_mathematics" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_mathematics"
+                                                name="SF10_1_mathematics"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_mathematics"
+                                                name="SF10_2_mathematics"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_mathematics"
+                                                name="SF10_3_mathematics"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_mathematics"
+                                                name="SF10_4_mathematics"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_final_mathematics"
+                                                name="SF10_final_mathematics"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_remarks_mathematics"
+                                                name="SF10_remarks_mathematics"></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Science</strong></td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_science" name="SF10_1_science" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_science" name="SF10_2_science" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_science" name="SF10_3_science" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_science" name="SF10_4_science" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_science" name="SF10_final_science" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_science" name="SF10_remarks_science" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_science"
+                                                name="SF10_1_science"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_science"
+                                                name="SF10_2_science"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_science"
+                                                name="SF10_3_science"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_science"
+                                                name="SF10_4_science"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_final_science"
+                                                name="SF10_final_science"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_remarks_science"
+                                                name="SF10_remarks_science"></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Araling Panlipunan</strong></td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_araling_panlipunan" name="SF10_1_araling_panlipunan" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_araling_panlipunan" name="SF10_2_araling_panlipunan" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_araling_panlipunan" name="SF10_3_araling_panlipunan" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_araling_panlipunan" name="SF10_4_araling_panlipunan" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_araling_panlipunan" name="SF10_final_araling_panlipunan" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_araling_panlipunan" name="SF10_remarks_araling_panlipunan" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_araling_panlipunan"
+                                                name="SF10_1_araling_panlipunan"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_araling_panlipunan"
+                                                name="SF10_2_araling_panlipunan"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_araling_panlipunan"
+                                                name="SF10_3_araling_panlipunan"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_araling_panlipunan"
+                                                name="SF10_4_araling_panlipunan"></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_final_araling_panlipunan"
+                                                name="SF10_final_araling_panlipunan"></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_remarks_araling_panlipunan"
+                                                name="SF10_remarks_araling_panlipunan"></td>
                                     </tr>
                                     <tr>
                                         <td><strong>EPP / TLE</strong></td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_epp_tle" name="SF10_1_epp_tle" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_epp_tle" name="SF10_2_epp_tle" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_epp_tle" name="SF10_3_epp_tle" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_epp_tle" name="SF10_4_epp_tle" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_epp_tle" name="SF10_final_epp_tle" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_epp_tle" name="SF10_remarks_epp_tle" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_epp_tle"
+                                                name="SF10_1_epp_tle"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_epp_tle"
+                                                name="SF10_2_epp_tle"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_epp_tle"
+                                                name="SF10_3_epp_tle"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_epp_tle"
+                                                name="SF10_4_epp_tle"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_final_epp_tle"
+                                                name="SF10_final_epp_tle"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_remarks_epp_tle"
+                                                name="SF10_remarks_epp_tle"></td>
                                     </tr>
                                     <tr>
                                         <td><strong>MAPEH</strong></td>
@@ -1030,39 +1197,65 @@
                                     </tr>
                                     <tr>
                                         <td>Music</td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_music" name="SF10_1_music" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_music" name="SF10_2_music" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_music" name="SF10_3_music" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_music" name="SF10_4_music" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_music" name="SF10_final_music" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_music" name="SF10_remarks_music" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_music"
+                                                name="SF10_1_music"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_music"
+                                                name="SF10_2_music"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_music"
+                                                name="SF10_3_music"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_music"
+                                                name="SF10_4_music"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_final_music"
+                                                name="SF10_final_music"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_remarks_music"
+                                                name="SF10_remarks_music"></td>
                                     </tr>
                                     <tr>
                                         <td>Arts</td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_arts" name="SF10_1_arts" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_arts" name="SF10_2_arts" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_arts" name="SF10_3_arts" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_arts" name="SF10_4_arts" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_arts" name="SF10_final_arts" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_arts" name="SF10_remarks_arts" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_arts"
+                                                name="SF10_1_arts"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_arts"
+                                                name="SF10_2_arts"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_arts"
+                                                name="SF10_3_arts"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_arts"
+                                                name="SF10_4_arts"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_final_arts"
+                                                name="SF10_final_arts"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_remarks_arts"
+                                                name="SF10_remarks_arts"></td>
                                     </tr>
                                     <tr>
                                         <td>Physical Education</td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_physical_education" name="SF10_1_physical_education" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_physical_education" name="SF10_2_physical_education" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_physical_education" name="SF10_3_physical_education" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_physical_education" name="SF10_4_physical_education" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_physical_education" name="SF10_final_physical_education" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_physical_education" name="SF10_remarks_physical_education" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_physical_education"
+                                                name="SF10_1_physical_education"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_physical_education"
+                                                name="SF10_2_physical_education"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_physical_education"
+                                                name="SF10_3_physical_education"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_physical_education"
+                                                name="SF10_4_physical_education"></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_final_physical_education"
+                                                name="SF10_final_physical_education"></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_remarks_physical_education"
+                                                name="SF10_remarks_physical_education"></td>
                                     </tr>
                                     <tr>
                                         <td>Health</td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_health" name="SF10_1_health" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_health" name="SF10_2_health" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_health" name="SF10_3_health" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_health" name="SF10_4_health" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_health" name="SF10_final_health" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_health" name="SF10_remarks_health" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_health"
+                                                name="SF10_1_health"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_health"
+                                                name="SF10_2_health"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_health"
+                                                name="SF10_3_health"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_health"
+                                                name="SF10_4_health"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_final_health"
+                                                name="SF10_final_health"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_remarks_health"
+                                                name="SF10_remarks_health"></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Eduk. sa Pagpapakatao</strong></td>
@@ -1070,31 +1263,54 @@
                                     </tr>
                                     <tr>
                                         <td>*Arabic Language</td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_arabic_language" name="SF10_1_arabic_language" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_arabic_language" name="SF10_2_arabic_language" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_arabic_language" name="SF10_3_arabic_language" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_arabic_language" name="SF10_4_arabic_language" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_arabic_language" name="SF10_final_arabic_language" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_arabic_language" name="SF10_remarks_arabic_language" ></td>
+                                        <td><input class="form-control text-center" id="e_SF10_1_arabic_language"
+                                                name="SF10_1_arabic_language"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_2_arabic_language"
+                                                name="SF10_2_arabic_language"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_3_arabic_language"
+                                                name="SF10_3_arabic_language"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_4_arabic_language"
+                                                name="SF10_4_arabic_language"></td>
+                                        <td><input class="form-control text-center" id="e_SF10_final_arabic_language"
+                                                name="SF10_final_arabic_language"></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_remarks_arabic_language"
+                                                name="SF10_remarks_arabic_language"></td>
                                     </tr>
                                     <tr>
                                         <td>*Islamic Values Education</td>
-                                        <td><input class="form-control text-center" id="e_SF10_1_islamic_values_education" name="SF10_1_islamic_values_education" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_2_islamic_values_education" name="SF10_2_islamic_values_education" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_3_islamic_values_education" name="SF10_3_islamic_values_education" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_4_islamic_values_education" name="SF10_4_islamic_values_education" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_islamic_values_education" name="SF10_final_islamic_values_education" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_islamic_values_education" name="SF10_remarks_islamic_values_education" ></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_1_islamic_values_education"
+                                                name="SF10_1_islamic_values_education"></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_2_islamic_values_education"
+                                                name="SF10_2_islamic_values_education"></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_3_islamic_values_education"
+                                                name="SF10_3_islamic_values_education"></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_4_islamic_values_education"
+                                                name="SF10_4_islamic_values_education"></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_final_islamic_values_education"
+                                                name="SF10_final_islamic_values_education"></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_remarks_islamic_values_education"
+                                                name="SF10_remarks_islamic_values_education"></td>
                                     </tr>
                                     <tr>
                                         <td><strong>General Average</strong></td>
                                         <td colspan="4"></td>
-                                        <td><input class="form-control text-center" id="e_SF10_final_general_average" name="SF10_final_general_average" ></td>
-                                        <td><input class="form-control text-center" id="e_SF10_remarks_general_average" name="SF10_remarks_general_average" ></td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_final_general_average" name="SF10_final_general_average">
+                                        </td>
+                                        <td><input class="form-control text-center"
+                                                id="e_SF10_remarks_general_average"
+                                                name="SF10_remarks_general_average"></td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1122,12 +1338,14 @@
                     @csrf
                     <div class="modal-body">
                         <input class="form-control e_id" type="text" name="id" hidden readonly>
-                        <input class="form-control" type="text" name="status" id="status" hidden readonly>
+                        <input class="form-control" type="text" name="status" id="status" hidden
+                            readonly>
                         <p>Are you sure you want to update the status of this pupil?</p>
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn-primary">Yes <i class="fa fa-paper-plane"></i></button>
+                        <button type="submit" class="btn btn-primary">Yes <i
+                                class="fa fa-paper-plane"></i></button>
                     </div>
                 </form>
             </div>
@@ -1157,6 +1375,57 @@
                 };
                 reader.readAsDataURL(this.files[0]);
             });
+            $("#e_student_form").change(function() {
+                let file = $(this).val();
+                let extension = file.split('.').pop().toLowerCase();
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+
+                if (extension !== "xlsx") {
+                    Toast.fire({
+                        icon: 'error',
+                        title: '<p class="text-center pt-2">Please upload the student Form 10 in .xlsx format.</p>'
+                    });
+
+                    $(this).val("");
+                    $(this).next(".custom-file-label").html("Choose file");
+                } else {
+                    let fileName = $(this).prop("files")[0].name;
+                    $(this).next(".custom-file-label").html(fileName);
+                }
+            });
+        });
+
+        $('.download_student_form_10').click(function() {
+
+            const path = $(this).attr('data-path');
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1000
+            });
+
+            if (!path) {
+                Toast.fire({
+                    icon: 'error',
+                    title: '<p class="text-center pt-2">This student has no Form 10</p>'
+                });
+                return;
+            }
+
+            const link = document.createElement('a');
+            link.href = path;
+            link.download = 'student_custom_form10.xlsx';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
         });
 
         // $('.download_student_form').click(function() {
@@ -1206,11 +1475,11 @@
             $('#e_SF10_section').val($(this).val());
         });
 
-        $('#pupil_print').on('click', function (e) {
+        $('#pupil_print').on('click', function(e) {
             e.preventDefault();
 
-            const id = $(this).data('id');
-
+            const id = $(".e_id").val();
+            
             const url = "{{ route('pupil_print', ':id') }}".replace(':id', id);
 
             window.open(url, '_blank');
@@ -1230,7 +1499,7 @@
                 success: function(data) {
 
                     console.log(data);
-                    
+
 
                     $(".e_id").val(data.pupil_id);
                     $("#status").val(data.status);
@@ -1307,12 +1576,12 @@
                     $("#v_SF10_final_araling_panlipunan").val(data.final_araling_panlipunan);
                     $("#v_SF10_remarks_araling_panlipunan").val(data.remarks_araling_panlipunan);
 
-                    $("#v_SF10_1_epp_tle").val(data.epp_tle_1);
-                    $("#v_SF10_2_epp_tle").val(data.epp_tle_2);
-                    $("#v_SF10_3_epp_tle").val(data.epp_tle_3);
-                    $("#v_SF10_4_epp_tle").val(data.epp_tle_4);
-                    $("#v_SF10_final_epp_tle").val(data.final_epp_tle);
-                    $("#v_SF10_remarks_epp_tle").val(data.remarks_epp_tle);
+                    $("#v_SF10_1_epp_tle").val(data.EPP_TLE_1);
+                    $("#v_SF10_2_epp_tle").val(data.EPP_TLE_2);
+                    $("#v_SF10_3_epp_tle").val(data.EPP_TLE_3);
+                    $("#v_SF10_4_epp_tle").val(data.EPP_TLE_4);
+                    $("#v_SF10_final_epp_tle").val(data.final_EPP_TLE);
+                    $("#v_SF10_remarks_epp_tle").val(data.remarks_EPP_TLE);
 
                     $("#v_SF10_1_music").val(data.music_1);
                     $("#v_SF10_2_music").val(data.music_2);
@@ -1353,8 +1622,14 @@
                     $("#v_SF10_2_islamic_values_education").val(data.islamic_values_education_2);
                     $("#v_SF10_3_islamic_values_education").val(data.islamic_values_education_3);
                     $("#v_SF10_4_islamic_values_education").val(data.islamic_values_education_4);
-                    $("#v_SF10_final_islamic_values_education").val(data.final_islamic_values_education);
-                    $("#v_SF10_remarks_islamic_values_education").val(data.remarks_islamic_values_education);
+                    $("#v_SF10_final_islamic_values_education").val(data
+                    .final_islamic_values_education);
+                    $("#v_SF10_remarks_islamic_values_education").val(data
+                        .remarks_islamic_values_education);
+                    $("#v_SF10_final_general_average").val(data
+                    .final_general_average);
+                    $("#v_SF10_remarks_general_average").val(data
+                        .remarks_general_average);
 
                     $('#pupil_print').attr('data-id', data.pupil_id);
 
@@ -1370,106 +1645,108 @@
                     $("#e_section").val(data.section);
                     // $("#e_download_student_form").attr("data-path", data.student_form_10);
 
-                    $("#e_SF10_school").val(data.school);
-                    $("#e_SF10_school_id").val(data.school_id);
-                    $("#e_SF10_district").val(data.district);
-                    $("#e_SF10_division").val(data.division);
-                    $("#e_SF10_region").val(data.region);
-                    $("#e_SF10_school_year").val(data.school_year);
-                    $("#e_SF10_teacher").val(data.teacher_id);
-                    $("#e_SF10_grade").val(data.grade_level);
-                    $("#e_SF10_section").val(data.section);
+                    // $("#e_SF10_school").val(data.school);
+                    // $("#e_SF10_school_id").val(data.school_id);
+                    // $("#e_SF10_district").val(data.district);
+                    // $("#e_SF10_division").val(data.division);
+                    // $("#e_SF10_region").val(data.region);
+                    // $("#e_SF10_school_year").val(data.school_year);
+                    // $("#e_SF10_teacher").val(data.teacher_id);
+                    // $("#e_SF10_grade").val(data.grade_level);
+                    // $("#e_SF10_section").val(data.section);
 
-                    $("#e_SF10_1_mother_tongue").val(data.mother_tongue_1);
-                    $("#e_SF10_2_mother_tongue").val(data.mother_tongue_2);
-                    $("#e_SF10_3_mother_tongue").val(data.mother_tongue_3);
-                    $("#e_SF10_4_mother_tongue").val(data.mother_tongue_4);
-                    $("#e_SF10_final_mother_tongue").val(data.final_mother_tongue);
-                    $("#e_SF10_remarks_mother_tongue").val(data.remarks_mother_tongue);
+                    // $("#e_SF10_1_mother_tongue").val(data.mother_tongue_1);
+                    // $("#e_SF10_2_mother_tongue").val(data.mother_tongue_2);
+                    // $("#e_SF10_3_mother_tongue").val(data.mother_tongue_3);
+                    // $("#e_SF10_4_mother_tongue").val(data.mother_tongue_4);
+                    // $("#e_SF10_final_mother_tongue").val(data.final_mother_tongue);
+                    // $("#e_SF10_remarks_mother_tongue").val(data.remarks_mother_tongue);
 
-                    $("#e_SF10_1_filipino").val(data.filipino_1);
-                    $("#e_SF10_2_filipino").val(data.filipino_2);
-                    $("#e_SF10_3_filipino").val(data.filipino_3);
-                    $("#e_SF10_4_filipino").val(data.filipino_4);
-                    $("#e_SF10_final_filipino").val(data.final_filipino);
-                    $("#e_SF10_remarks_filipino").val(data.remarks_filipino);
+                    // $("#e_SF10_1_filipino").val(data.filipino_1);
+                    // $("#e_SF10_2_filipino").val(data.filipino_2);
+                    // $("#e_SF10_3_filipino").val(data.filipino_3);
+                    // $("#e_SF10_4_filipino").val(data.filipino_4);
+                    // $("#e_SF10_final_filipino").val(data.final_filipino);
+                    // $("#e_SF10_remarks_filipino").val(data.remarks_filipino);
 
-                    $("#e_SF10_1_english").val(data.english_1);
-                    $("#e_SF10_2_english").val(data.english_2);
-                    $("#e_SF10_3_english").val(data.english_3);
-                    $("#e_SF10_4_english").val(data.english_4);
-                    $("#e_SF10_final_english").val(data.final_english);
-                    $("#e_SF10_remarks_english").val(data.remarks_english);
+                    // $("#e_SF10_1_english").val(data.english_1);
+                    // $("#e_SF10_2_english").val(data.english_2);
+                    // $("#e_SF10_3_english").val(data.english_3);
+                    // $("#e_SF10_4_english").val(data.english_4);
+                    // $("#e_SF10_final_english").val(data.final_english);
+                    // $("#e_SF10_remarks_english").val(data.remarks_english);
 
-                    $("#e_SF10_1_mathematics").val(data.mathematics_1);
-                    $("#e_SF10_2_mathematics").val(data.mathematics_2);
-                    $("#e_SF10_3_mathematics").val(data.mathematics_3);
-                    $("#e_SF10_4_mathematics").val(data.mathematics_4);
-                    $("#e_SF10_final_mathematics").val(data.final_mathematics);
-                    $("#e_SF10_remarks_mathematics").val(data.remarks_mathematics);
+                    // $("#e_SF10_1_mathematics").val(data.mathematics_1);
+                    // $("#e_SF10_2_mathematics").val(data.mathematics_2);
+                    // $("#e_SF10_3_mathematics").val(data.mathematics_3);
+                    // $("#e_SF10_4_mathematics").val(data.mathematics_4);
+                    // $("#e_SF10_final_mathematics").val(data.final_mathematics);
+                    // $("#e_SF10_remarks_mathematics").val(data.remarks_mathematics);
 
-                    $("#e_SF10_1_science").val(data.science_1);
-                    $("#e_SF10_2_science").val(data.science_2);
-                    $("#e_SF10_3_science").val(data.science_3);
-                    $("#e_SF10_4_science").val(data.science_4);
-                    $("#e_SF10_final_science").val(data.final_science);
-                    $("#e_SF10_remarks_science").val(data.remarks_science);
+                    // $("#e_SF10_1_science").val(data.science_1);
+                    // $("#e_SF10_2_science").val(data.science_2);
+                    // $("#e_SF10_3_science").val(data.science_3);
+                    // $("#e_SF10_4_science").val(data.science_4);
+                    // $("#e_SF10_final_science").val(data.final_science);
+                    // $("#e_SF10_remarks_science").val(data.remarks_science);
 
-                    $("#e_SF10_1_araling_panlipunan").val(data.araling_panlipunan_1);
-                    $("#e_SF10_2_araling_panlipunan").val(data.araling_panlipunan_2);
-                    $("#e_SF10_3_araling_panlipunan").val(data.araling_panlipunan_3);
-                    $("#e_SF10_4_araling_panlipunan").val(data.araling_panlipunan_4);
-                    $("#e_SF10_final_araling_panlipunan").val(data.final_araling_panlipunan);
-                    $("#e_SF10_remarks_araling_panlipunan").val(data.remarks_araling_panlipunan);
+                    // $("#e_SF10_1_araling_panlipunan").val(data.araling_panlipunan_1);
+                    // $("#e_SF10_2_araling_panlipunan").val(data.araling_panlipunan_2);
+                    // $("#e_SF10_3_araling_panlipunan").val(data.araling_panlipunan_3);
+                    // $("#e_SF10_4_araling_panlipunan").val(data.araling_panlipunan_4);
+                    // $("#e_SF10_final_araling_panlipunan").val(data.final_araling_panlipunan);
+                    // $("#e_SF10_remarks_araling_panlipunan").val(data.remarks_araling_panlipunan);
 
-                    $("#e_SF10_1_epp_tle").val(data.epp_tle_1);
-                    $("#e_SF10_2_epp_tle").val(data.epp_tle_2);
-                    $("#e_SF10_3_epp_tle").val(data.epp_tle_3);
-                    $("#e_SF10_4_epp_tle").val(data.epp_tle_4);
-                    $("#e_SF10_final_epp_tle").val(data.final_epp_tle);
-                    $("#e_SF10_remarks_epp_tle").val(data.remarks_epp_tle);
+                    // $("#e_SF10_1_epp_tle").val(data.epp_tle_1);
+                    // $("#e_SF10_2_epp_tle").val(data.epp_tle_2);
+                    // $("#e_SF10_3_epp_tle").val(data.epp_tle_3);
+                    // $("#e_SF10_4_epp_tle").val(data.epp_tle_4);
+                    // $("#e_SF10_final_epp_tle").val(data.final_epp_tle);
+                    // $("#e_SF10_remarks_epp_tle").val(data.remarks_epp_tle);
 
-                    $("#e_SF10_1_music").val(data.music_1);
-                    $("#e_SF10_2_music").val(data.music_2);
-                    $("#e_SF10_3_music").val(data.music_3);
-                    $("#e_SF10_4_music").val(data.music_4);
-                    $("#e_SF10_final_music").val(data.final_music);
-                    $("#e_SF10_remarks_music").val(data.remarks_music);
+                    // $("#e_SF10_1_music").val(data.music_1);
+                    // $("#e_SF10_2_music").val(data.music_2);
+                    // $("#e_SF10_3_music").val(data.music_3);
+                    // $("#e_SF10_4_music").val(data.music_4);
+                    // $("#e_SF10_final_music").val(data.final_music);
+                    // $("#e_SF10_remarks_music").val(data.remarks_music);
 
-                    $("#e_SF10_1_arts").val(data.arts_1);
-                    $("#e_SF10_2_arts").val(data.arts_2);
-                    $("#e_SF10_3_arts").val(data.arts_3);
-                    $("#e_SF10_4_arts").val(data.arts_4);
-                    $("#e_SF10_final_arts").val(data.final_arts);
-                    $("#e_SF10_remarks_arts").val(data.remarks_arts);
+                    // $("#e_SF10_1_arts").val(data.arts_1);
+                    // $("#e_SF10_2_arts").val(data.arts_2);
+                    // $("#e_SF10_3_arts").val(data.arts_3);
+                    // $("#e_SF10_4_arts").val(data.arts_4);
+                    // $("#e_SF10_final_arts").val(data.final_arts);
+                    // $("#e_SF10_remarks_arts").val(data.remarks_arts);
 
-                    $("#e_SF10_1_physical_education").val(data.physical_education_1);
-                    $("#e_SF10_2_physical_education").val(data.physical_education_2);
-                    $("#e_SF10_3_physical_education").val(data.physical_education_3);
-                    $("#e_SF10_4_physical_education").val(data.physical_education_4);
-                    $("#e_SF10_final_physical_education").val(data.final_physical_education);
-                    $("#e_SF10_remarks_physical_education").val(data.remarks_physical_education);
+                    // $("#e_SF10_1_physical_education").val(data.physical_education_1);
+                    // $("#e_SF10_2_physical_education").val(data.physical_education_2);
+                    // $("#e_SF10_3_physical_education").val(data.physical_education_3);
+                    // $("#e_SF10_4_physical_education").val(data.physical_education_4);
+                    // $("#e_SF10_final_physical_education").val(data.final_physical_education);
+                    // $("#e_SF10_remarks_physical_education").val(data.remarks_physical_education);
 
-                    $("#e_SF10_1_health").val(data.health_1);
-                    $("#e_SF10_2_health").val(data.health_2);
-                    $("#e_SF10_3_health").val(data.health_3);
-                    $("#e_SF10_4_health").val(data.health_4);
-                    $("#e_SF10_final_health").val(data.final_health);
-                    $("#e_SF10_remarks_health").val(data.remarks_health);
+                    // $("#e_SF10_1_health").val(data.health_1);
+                    // $("#e_SF10_2_health").val(data.health_2);
+                    // $("#e_SF10_3_health").val(data.health_3);
+                    // $("#e_SF10_4_health").val(data.health_4);
+                    // $("#e_SF10_final_health").val(data.final_health);
+                    // $("#e_SF10_remarks_health").val(data.remarks_health);
 
-                    $("#e_SF10_1_arabic_language").val(data.arabic_language_1);
-                    $("#e_SF10_2_arabic_language").val(data.arabic_language_2);
-                    $("#e_SF10_3_arabic_language").val(data.arabic_language_3);
-                    $("#e_SF10_4_arabic_language").val(data.arabic_language_4);
-                    $("#e_SF10_final_arabic_language").val(data.final_arabic_language);
-                    $("#e_SF10_remarks_arabic_language").val(data.remarks_arabic_language);
+                    // $("#e_SF10_1_arabic_language").val(data.arabic_language_1);
+                    // $("#e_SF10_2_arabic_language").val(data.arabic_language_2);
+                    // $("#e_SF10_3_arabic_language").val(data.arabic_language_3);
+                    // $("#e_SF10_4_arabic_language").val(data.arabic_language_4);
+                    // $("#e_SF10_final_arabic_language").val(data.final_arabic_language);
+                    // $("#e_SF10_remarks_arabic_language").val(data.remarks_arabic_language);
 
-                    $("#e_SF10_1_islamic_values_education").val(data.islamic_values_education_1);
-                    $("#e_SF10_2_islamic_values_education").val(data.islamic_values_education_2);
-                    $("#e_SF10_3_islamic_values_education").val(data.islamic_values_education_3);
-                    $("#e_SF10_4_islamic_values_education").val(data.islamic_values_education_4);
-                    $("#e_SF10_final_islamic_values_education").val(data.final_islamic_values_education);
-                    $("#e_SF10_remarks_islamic_values_education").val(data.remarks_islamic_values_education);
+                    // $("#e_SF10_1_islamic_values_education").val(data.islamic_values_education_1);
+                    // $("#e_SF10_2_islamic_values_education").val(data.islamic_values_education_2);
+                    // $("#e_SF10_3_islamic_values_education").val(data.islamic_values_education_3);
+                    // $("#e_SF10_4_islamic_values_education").val(data.islamic_values_education_4);
+                    // $("#e_SF10_final_islamic_values_education").val(data
+                    // .final_islamic_values_education);
+                    // $("#e_SF10_remarks_islamic_values_education").val(data
+                    //     .remarks_islamic_values_education);
 
                 }
             });

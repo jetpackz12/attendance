@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('division')->nullable();
             $table->string('region')->nullable();
             $table->string('school_year')->nullable();
-            $table->foreignId('teacher_id')->nullable();
+            // $table->foreignId('teacher_id')->nullable();
+            $table->string('teacher_id')->nullable();
             $table->timestamps();
         });
     }
